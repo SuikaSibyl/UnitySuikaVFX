@@ -20,7 +20,7 @@ Shader "VFX/Blend"
             Name "Forward"
             Tags {"LightMode"="ForwardBase"}
 
-            Blend One OneMinusSrcAlpha
+            Blend One One
 
             CGPROGRAM
             #pragma vertex vert
