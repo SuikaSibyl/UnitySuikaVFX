@@ -2,8 +2,6 @@ Shader "VFX/VFXGen"
 {
     Properties
     {
-        _Opacity("Opacity", range(0,1)) = 0.5
-        
         // ==============================================
         // Alpha Mode
         // ----------------------------------------------
@@ -27,6 +25,8 @@ Shader "VFX/VFXGen"
         _Color("Albedo Color", Color) = (1,1,1,1)
         // Mask Map
         _MaskTex ("Mask Texture", 2D) = "white"{}
+        _NoiseSpeed("Noise Speed", range(-5,5)) = 0.0
+        _NoiseDensity("Noise Density", range(0,5)) = 0.0
         // ==============================================
 
         // ==============================================
@@ -46,9 +46,22 @@ Shader "VFX/VFXGen"
         _WarpInt ("Warp Intensity", range(0,5)) = 0.5
         // ==============================================
 
-        _NoiseTex ("Noise Texture", 2D) = "gray"{}
-        _NoiseInt ("Noise Intensity", range(0,5)) = 0.5
-        _FlowSpeed ("Flow Speed", Vector) = (0,0,0,0)
+        // ==============================================
+        // UV Animation
+        // ----------------------------------------------
+        // Sequence UV Animation
+        // ----------------------------------------------
+        [HideInInspector] _UVAnimationMode("__uvamode", Float) = 1.0
+        _RowCount ("Row", int)= 1
+        _ColCount ("Colume", int)= 1
+        _SeqSpeed ("Speed", int)= 0
+        // Sequence UV
+        // ----------------------------------------------
+
+        // ==============================================
+
+        _Opacity("Opacity", range(0,1)) = 0.5
+
         
         _ScreenTex ("Screen Texture", 2D) = "white"{}
 
@@ -87,7 +100,9 @@ Shader "VFX/VFXGen"
             // make fog work
             #pragma multi_compile_fog
             #pragma shader_feature REDIFY_ON
+
             #pragma multi_compile CUTOUT BLEND
+            #pragma multi_compile UVNONE UVSEQ
 
 
             #include "UnityCG.cginc"
@@ -113,9 +128,6 @@ Shader "VFX/VFXGen"
             fixed4 _Color;
             float _Opacity;
 
-            float  _NoiseInt;
-            float2 _FlowSpeed;
-
             float  _WarpInt;
             // Blend Mode Only
         #if BLEND
@@ -126,15 +138,23 @@ Shader "VFX/VFXGen"
             float _Cutoff;
         #endif
 
+            // Noise
+            float _NoiseSpeed;
+            float _NoiseDensity;
+
             // Dissolve
             fixed  _DissolveIntensity;
             fixed  _DissolveEdgeWidth;
             fixed4 _DissolveEdgeColor;
 
+            // UV Animation
+            int _RowCount;
+            int _ColCount;
+            float _SeqSpeed;
+
             // All Texture Samplers & STs
             sampler2D _MainTex;     float4 _MainTex_ST;
             sampler2D _MaskTex;     float4 _MaskTex_ST;
-            sampler2D _NoiseTex;    float4 _NoiseTex_ST;
             sampler2D _WarpTex;     float4 _WarpTex_ST;
             sampler2D _ScreenTex;   float4 _ScreenTex_ST;
             sampler2D _DissolveTex;
@@ -146,8 +166,15 @@ Shader "VFX/VFXGen"
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 o.color = v.color;
                 o.uv0 = TRANSFORM_TEX(v.uv, _MainTex);
-                o.uv1 = TRANSFORM_TEX(v.uv, _NoiseTex);
-                o.uv1 += frac(_Time.x * _FlowSpeed);
+
+                #if UVSEQ
+                // UV Animation
+                int _SeqId = floor(_Time.y * _SeqSpeed);
+                int c = _SeqId % _ColCount;
+                int r = _SeqId / _ColCount;
+                o.uv0 = float2(1./_ColCount, 1./_RowCount) * (float2(c,-1-r)+o.uv0);
+                #endif
+
                 o.uv_mask = TRANSFORM_TEX(v.uv, _MaskTex);
                 o.uv_screen = ComputeScreenPos (o.vertex);
                 
@@ -174,11 +201,16 @@ Shader "VFX/VFXGen"
                 // Main Color Determination
                 // ---------------------------------
                 // Get color from MainTex
-                fixed  mask = tex2D(_MaskTex, i.uv_mask).r;
-                fixed4 col = tex2D(_MainTex, i.uv0 + bias);
-                       col *= _Color * i.
-                           color;
-                       col.a *= mask;
+                half _Density = 1.0f;
+                half _Scroll = 1.0f;
+                half  mask = tex2D(_MaskTex, i.uv0 + bias).r;
+                half noise_1 = tex2D(_MaskTex, i.uv0 * _NoiseDensity - float2(_Time.x * 2, _Time.x * 3) * _NoiseSpeed).g;
+                half noise_2 = tex2D(_MaskTex, i.uv0 * _NoiseDensity - float2(_Time.x * -2, _Time.x * 4) * _NoiseSpeed).b;
+
+                half4 col = tex2D(_MainTex, i.uv0 + bias);
+                     col *= _Color * i.color;
+                     col.a *= mask * noise_1 * noise_2;
+                
                 // If use Cutout mode, do clip
                 #if CUTOUT
                     clip(col.a - _Cutoff);
@@ -201,13 +233,6 @@ Shader "VFX/VFXGen"
 
                 i.uv_screen.xy /= i.uv_screen.w;
                 fixed4 grab = tex2D(_GrabTex, i.uv_screen.xy + bias);
-
-                // // 
-                // fixed  noise = tex2D(_NoiseTex, i.uv1).r;
-                //        noise = lerp(1.0, noise * 2.0, _NoiseInt);
-                //        noise = max(0.0, noise);
-
-                // fixed opacity = _Opacity * col.a * noise;
 
                 // apply fog
                 // UNITY_APPLY_FOG(i.fogCoord, col);

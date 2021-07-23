@@ -23,6 +23,14 @@ internal class SVEGeneralShaderGUI : ShaderGUI
         Off,
         On
     }
+
+    private enum UVAnimationMode
+    {
+        None,
+        Sequence,
+        Flow
+    }
+
     #endregion
     //material.SetInt("_ZWrite", 0);
     private static class Styles
@@ -48,6 +56,7 @@ internal class SVEGeneralShaderGUI : ShaderGUI
         public static readonly string[] alphaNames = Enum.GetNames(typeof(AlphaMode));
         public static readonly string[] zwriteNames = Enum.GetNames(typeof(ZWriteMode));
         public static readonly string[] blendNames = Enum.GetNames(typeof(BlendMode));
+        public static readonly string[] uvaNames = Enum.GetNames(typeof(UVAnimationMode));
     }
 
     MaterialProperty alphaMode = null;
@@ -56,6 +65,9 @@ internal class SVEGeneralShaderGUI : ShaderGUI
     MaterialProperty blendDst = null;
     MaterialProperty blendOp = null;
     MaterialProperty zwriteMode = null;
+
+    MaterialProperty noiseSpeed = null;
+    MaterialProperty noiseDensity = null;
 
     MaterialProperty albedoMap = null;
     MaterialProperty albedoColor = null;
@@ -69,7 +81,13 @@ internal class SVEGeneralShaderGUI : ShaderGUI
     MaterialProperty warpMap = null;
     MaterialProperty warpInt = null;
 
-    MaterialProperty blendMode;
+    //UV Anim
+    MaterialProperty uvaMode = null;
+    MaterialProperty uvaSeqRow = null;
+    MaterialProperty uvaSeqCol = null;
+    MaterialProperty uvaSeqSpeed = null;
+
+     MaterialProperty blendMode;
     MaterialEditor m_MaterialEditor;
 
     bool m_FirstTimeApply = true;
@@ -84,6 +102,9 @@ internal class SVEGeneralShaderGUI : ShaderGUI
         blendMode    = FindProperty("_BlendMode", props);
         zwriteMode   = FindProperty("_ZWrite", props);
 
+        noiseSpeed   = FindProperty("_NoiseSpeed", props);
+        noiseDensity = FindProperty("_NoiseDensity", props);
+
         albedoMap = FindProperty("_MainTex", props);
         albedoColor = FindProperty("_Color", props);
         maskMap = FindProperty("_MaskTex", props);
@@ -95,6 +116,11 @@ internal class SVEGeneralShaderGUI : ShaderGUI
 
         warpMap = FindProperty("_WarpTex", props);
         warpInt = FindProperty("_WarpInt", props);
+
+        uvaMode = FindProperty("_UVAnimationMode", props);
+        uvaSeqRow = FindProperty("_RowCount", props);
+        uvaSeqCol = FindProperty("_ColCount", props);
+        uvaSeqSpeed = FindProperty("_SeqSpeed", props);
     }
 
     public override void OnGUI(MaterialEditor materialEditor, MaterialProperty[] properties)
@@ -129,11 +155,15 @@ internal class SVEGeneralShaderGUI : ShaderGUI
             blendModeChanged = BlendModePopup(material);
             DoBlendModeArea(material);
 
-
             // Primary properties
             EditorGUILayout.Space();
             GUILayout.Label(Styles.primaryMapsText, EditorStyles.boldLabel);
             DoAlbedoArea(material);
+
+            // UV Animation properties
+            EditorGUILayout.Space();
+            GUILayout.Label("UV Animation", EditorStyles.boldLabel);
+            DoUVAnimationArea(material);
 
             // Dissolve properties
             EditorGUILayout.Space();
@@ -250,7 +280,8 @@ internal class SVEGeneralShaderGUI : ShaderGUI
     void DoAlbedoArea(Material material)
     {
         m_MaterialEditor.TexturePropertySingleLine(Styles.albedoText, albedoMap, albedoColor);
-        m_MaterialEditor.TexturePropertySingleLine(Styles.maskText, maskMap);
+        m_MaterialEditor.TexturePropertySingleLine(Styles.maskText, maskMap, noiseSpeed);
+        m_MaterialEditor.ShaderProperty(noiseDensity, "Noise Density", 2);
     }
 
     void DoDissolveArea(Material material)
@@ -258,13 +289,47 @@ internal class SVEGeneralShaderGUI : ShaderGUI
         m_MaterialEditor.TexturePropertySingleLine(Styles.dissolveText, dissolveMap, dissolveInt);
         m_MaterialEditor.ShaderProperty(dissolveEdgeColor, "Edge Color", 2);
         m_MaterialEditor.ShaderProperty(dissolveEdgeWidth, "Edge Width", 2);
-
     }
 
     void DoWarpArea(Material material)
     {
         m_MaterialEditor.TexturePropertySingleLine(Styles.warpText, warpMap, warpInt);
-        //m_MaterialEditor.ShaderProperty(dissolveEdgeColor, "Edge Color", 2);
-        //m_MaterialEditor.ShaderProperty(dissolveEdgeWidth, "Edge Width", 2);
+    }
+
+    void DoUVAnimationArea(Material material)
+    {
+        EditorGUI.showMixedValue = uvaMode.hasMixedValue;
+        var mode = (UVAnimationMode)uvaMode.floatValue;
+
+        EditorGUI.BeginChangeCheck();
+        EditorGUI.indentLevel += 2;
+        mode = (UVAnimationMode)EditorGUILayout.Popup("UVA Mode", (int)mode, Styles.uvaNames);
+        bool result = EditorGUI.EndChangeCheck();
+        if (result)
+        {
+            uvaMode.floatValue = (int)mode;
+        }
+        EditorGUI.indentLevel -= 2;
+
+        switch (mode)
+        {
+            case UVAnimationMode.None:
+                material.DisableKeyword("UVSEQ");
+                break;
+            case UVAnimationMode.Sequence:
+                DoSequenceAniArea(material);
+                material.EnableKeyword("UVSEQ");
+                break;
+            case UVAnimationMode.Flow:
+                material.DisableKeyword("UVSEQ");
+                break;
+        }
+    }
+
+    void DoSequenceAniArea(Material material)
+    {
+        m_MaterialEditor.ShaderProperty(uvaSeqRow, "Row", 2);
+        m_MaterialEditor.ShaderProperty(uvaSeqCol, "Colume", 2); 
+        m_MaterialEditor.ShaderProperty(uvaSeqSpeed, "Current", 2);
     }
 }
