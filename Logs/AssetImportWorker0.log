@@ -2534,3 +2534,4 @@ Received Import Request.
 Start importing Assets/SuikaVisualEffects/Materials/Splash.mat using Guid(32cc80d1757e1e44cbf67574435f2f80) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a500ed081929d47a8ebfc393a531d04c') in 0.010680 seconds 
   Import took 0.012944 seconds .
 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
