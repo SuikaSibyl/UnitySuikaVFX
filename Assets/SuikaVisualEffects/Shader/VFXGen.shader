@@ -22,7 +22,7 @@ Shader "VFX/VFXGen"
         // ----------------------------------------------
         // Main Tex & Multiply Color
         _MainTex ("Texture", 2D) = "white" {}
-        _Color("Albedo Color", Color) = (1,1,1,1)
+        [HDR]_Color("Albedo Color", Color) = (1,1,1,1)
         // Mask Map
         _MaskTex ("Mask Texture", 2D) = "white"{}
         _NoiseSpeed("Noise Speed", range(-5,5)) = 0.0
@@ -51,11 +51,13 @@ Shader "VFX/VFXGen"
         // ----------------------------------------------
         // Sequence UV Animation
         // ----------------------------------------------
-        [HideInInspector] _UVAnimationMode("__uvamode", Float) = 1.0
+        [HideInInspector] _UVAnimationMode("__uvamode", Float) = 0.0
         _RowCount ("Row", int)= 1
         _ColCount ("Colume", int)= 1
         _SeqSpeed ("Speed", int)= 0
-        // Sequence UV
+        // Flow UV
+        _SpeedX ("SpeedX", Float) = 0.0
+        _SpeedY ("SpeedY", Float) = 0.0
         // ----------------------------------------------
 
         // ==============================================
@@ -68,7 +70,10 @@ Shader "VFX/VFXGen"
         // Blending state
         [HideInInspector] _Mode ("__mode", Float) = 0.0
         [HideInInspector] _BlendMode("__bmode", Float) = 0.0
-        [HideInInspector] _ZWrite("__zw", Float) = 1.0
+        [HideInInspector] _ZWrite("__zw", Float) = 0.0
+        [HideInInspector] _ZTest("__ztest", Float) = 4.0
+        [HideInInspector] _CullMode("__cull", Float) = 2.0
+        [HideInInspector] _GrabMode("__grab", Float) = 0.0
     }
     SubShader
     {
@@ -93,6 +98,8 @@ Shader "VFX/VFXGen"
             BlendOp [_BlendOp]
             Blend [_BlendSrc] [_BlendDst]
             ZWrite[_ZWrite]
+            ZTest[_ZTest]
+            Cull[_CullMode]
 
             CGPROGRAM
             #pragma vertex vert
@@ -102,7 +109,8 @@ Shader "VFX/VFXGen"
             #pragma shader_feature REDIFY_ON
 
             #pragma multi_compile CUTOUT BLEND
-            #pragma multi_compile UVNONE UVSEQ
+            #pragma multi_compile UVNONE UVSEQ UVFLOW
+            #pragma multi_compile BGOFF BGON
 
 
             #include "UnityCG.cginc"
@@ -151,6 +159,8 @@ Shader "VFX/VFXGen"
             int _RowCount;
             int _ColCount;
             float _SeqSpeed;
+            float _SpeedX;
+            float _SpeedY;
 
             // All Texture Samplers & STs
             sampler2D _MainTex;     float4 _MainTex_ST;
@@ -174,6 +184,9 @@ Shader "VFX/VFXGen"
                 int r = _SeqId / _ColCount;
                 o.uv0 = float2(1./_ColCount, 1./_RowCount) * (float2(c,-1-r)+o.uv0);
                 #endif
+#if UVFLOW
+                o.uv0 = o.uv0 + float2(_SpeedX, _SpeedY) * _Time.x;
+#endif
 
                 o.uv_mask = TRANSFORM_TEX(v.uv, _MaskTex);
                 o.uv_screen = ComputeScreenPos (o.vertex);
@@ -195,8 +208,8 @@ Shader "VFX/VFXGen"
                 // ---------------------------------
                 // warp the uv, using uv texture
                 // sample the MainTex, get col
-                fixed3 warp = tex2D(_WarpTex, i.uv1).rgb;
-                fixed2 bias = (warp.rg - 0.5) * _WarpInt;
+                half3 warp = tex2D(_WarpTex, i.uv0).rgb;
+                half2 bias = (warp.rg - 0.5) * _WarpInt;
 
                 // Main Color Determination
                 // ---------------------------------
@@ -227,12 +240,17 @@ Shader "VFX/VFXGen"
                     col.rgb = _DissolveEdgeColor;
                 }
 
+                // Add warped background
+#if BGON
+                i.uv_screen.xy /= i.uv_screen.w;
+                //i.uv_screen.y = 1 - i.uv_screen.y;
+                half4 grab = tex2D(_GrabTex, i.uv_screen.xy + bias);
+                col.rgb += grab.rgb;
+#endif
+
                 // Multiply the alpha
                 // ---------------------------------
                 col.rgb *= col.a;
-
-                i.uv_screen.xy /= i.uv_screen.w;
-                fixed4 grab = tex2D(_GrabTex, i.uv_screen.xy + bias);
 
                 // apply fog
                 // UNITY_APPLY_FOG(i.fogCoord, col);
