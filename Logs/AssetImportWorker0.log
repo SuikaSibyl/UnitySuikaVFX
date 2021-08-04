@@ -15,11 +15,11 @@ E:/Unity_Projects/VFX
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-56771
+54404
 Successfully changed project path to: E:/Unity_Projects/VFX
 E:/Unity_Projects/VFX
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 27.86 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 25.95 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.13f1c1 (93b9df9a3ddc)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.13f1c1/Editor/Data/Resources/UnitySubsystems
@@ -35,37 +35,37 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.13f1c1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.13f1c1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.13f1c1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56840
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56720
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.13f1c1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.001053 seconds.
+Registered in 0.001032 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 26.79 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 25.00 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.309 seconds
+- Completed reload, in  1.261 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.002467 seconds.
+Registered in 0.002264 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.32 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.28 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.795 seconds
+- Completed reload, in  0.789 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Refreshing native plugins compatible for Editor in 0.31 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.27 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1531 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 76.6 MB.
-System memory in use after: 76.7 MB.
+Unloading 1516 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 74.3 MB.
+System memory in use after: 74.4 MB.
 
-Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 1977.
-Total: 1.604000 ms (FindLiveObjects: 0.118200 ms CreateObjectMapping: 0.035100 ms MarkObjects: 1.407700 ms  DeleteObjects: 0.042200 ms)
+Unloading 18 unused Assets to reduce memory usage. Loaded Objects now: 1963.
+Total: 1.972800 ms (FindLiveObjects: 0.129000 ms CreateObjectMapping: 0.041400 ms MarkObjects: 1.751500 ms  DeleteObjects: 0.050300 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -77,268 +77,3 @@ AssetImportParameters requested are different than current active one (requested
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  path: Assets/SuikaVisualEffects/Materials/TEST.mat
-  artifactKey: Guid(4054653632d8660429471cbcacea985b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SuikaVisualEffects/Materials/TEST.mat using Guid(4054653632d8660429471cbcacea985b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6edbbf3902fb7ab3b0cb3f41ccb07c23') in 0.114814 seconds 
-  Import took 0.117040 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.002479 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.32 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.741 seconds
-Platform modules already initialized, skipping
-Switching build target platform(19) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
-Refreshing native plugins compatible for Editor in 0.31 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1495 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 76.0 MB.
-System memory in use after: 76.2 MB.
-
-Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2021.
-Total: 1.850500 ms (FindLiveObjects: 0.138700 ms CreateObjectMapping: 0.044100 ms MarkObjects: 1.627600 ms  DeleteObjects: 0.039100 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.003453 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.34 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.901 seconds
-Platform modules already initialized, skipping
-Switching build target platform(19) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
-Refreshing native plugins compatible for Editor in 0.32 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1495 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 76.1 MB.
-System memory in use after: 76.2 MB.
-
-Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2024.
-Total: 1.654400 ms (FindLiveObjects: 0.121800 ms CreateObjectMapping: 0.039900 ms MarkObjects: 1.479200 ms  DeleteObjects: 0.012900 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 131.930436 seconds.
-  path: Assets/SuikaVisualEffects/Effects/Projectile/projectile.anim
-  artifactKey: Guid(a9b76faf76ba71548ace47519bc3a88d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SuikaVisualEffects/Effects/Projectile/projectile.anim using Guid(a9b76faf76ba71548ace47519bc3a88d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ad842a62624c0021c6b69b824e23340c') in 0.038633 seconds 
-  Import took 0.213277 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.507389 seconds.
-  path: Assets/SuikaVisualEffects/Shader/VFXGen.shader
-  artifactKey: Guid(24a44fe70a8c46d43b0e2125b6e986f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SuikaVisualEffects/Shader/VFXGen.shader using Guid(24a44fe70a8c46d43b0e2125b6e986f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4c8d89738b32cc1dbe2d20c52f9b3c10') in 0.004556 seconds 
-  Import took 0.149455 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.137533 seconds.
-  path: Assets/SuikaVisualEffects/Textures/Magic/magic2.mat
-  artifactKey: Guid(b998adae4b0288b4690fb4a8226a83c3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SuikaVisualEffects/Textures/Magic/magic2.mat using Guid(b998adae4b0288b4690fb4a8226a83c3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '799b9ba1f0ae3e6ea3e7cfb563d242f4') in 0.094893 seconds 
-  Import took 0.108495 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.048978 seconds.
-  path: Assets/SuikaVisualEffects/PlasmaMagic.controller
-  artifactKey: Guid(75eed3289e1bc9947aded9f50a7a3599) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SuikaVisualEffects/PlasmaMagic.controller using Guid(75eed3289e1bc9947aded9f50a7a3599) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '206d09a963f48128bee3d2d74416ec1b') in 0.004831 seconds 
-  Import took 0.017411 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.019619 seconds.
-  path: Assets/SuikaVisualEffects/Explosion.unity
-  artifactKey: Guid(9df08463232998442833415ae250ab2d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SuikaVisualEffects/Explosion.unity using Guid(9df08463232998442833415ae250ab2d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd96f083d5350d370f50908e1d5b82f37') in 0.002586 seconds 
-  Import took 0.004781 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.002368 seconds.
-  path: Assets/SuikaVisualEffects/PlasmaMagic.anim
-  artifactKey: Guid(8a12fbfd128a58e4d8250ad12db6c07b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SuikaVisualEffects/PlasmaMagic.anim using Guid(8a12fbfd128a58e4d8250ad12db6c07b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e51da167dedf69ab3df3659586df0e4a') in 0.002501 seconds 
-  Import took 0.004654 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.234631 seconds.
-  path: Assets/SuikaVisualEffects/Explosion_Profiles
-  artifactKey: Guid(bd12cd75c85ad384eb75b065beb457d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SuikaVisualEffects/Explosion_Profiles using Guid(bd12cd75c85ad384eb75b065beb457d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '56488be09acdf84a63db84f2367b25df') in 0.002022 seconds 
-  Import took 0.003956 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.135127 seconds.
-  path: Assets/SuikaVisualEffects/Effects/Blackhole/Wave.mat
-  artifactKey: Guid(96bc8dbb6cf2b4646bde25e6daf126e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SuikaVisualEffects/Effects/Blackhole/Wave.mat using Guid(96bc8dbb6cf2b4646bde25e6daf126e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cf1c4fb2d64ec2b6f5bbe3a251926960') in 0.010178 seconds 
-  Import took 0.012294 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.055051 seconds.
-  path: Assets/SuikaVisualEffects/Effects/Blackhole/Rim.mat
-  artifactKey: Guid(a662fb46cf98df04f9967e8198e91b5a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SuikaVisualEffects/Effects/Blackhole/Rim.mat using Guid(a662fb46cf98df04f9967e8198e91b5a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7e1cfaa9b34febeb02ca66fea0c98608') in 0.009299 seconds 
-  Import took 0.020067 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.004159 seconds.
-  path: Assets/SuikaVisualEffects/Effects/Test/Test Scene.unity
-  artifactKey: Guid(2dd04c4e75c5fae4b88821685bd3b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SuikaVisualEffects/Effects/Test/Test Scene.unity using Guid(2dd04c4e75c5fae4b88821685bd3b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f7bf5059153e130d1bf4fd46e2ad4fc1') in 0.002134 seconds 
-  Import took 0.004075 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.032610 seconds.
-  path: Assets/SuikaVisualEffects/Textures/Magic/magic4.mat
-  artifactKey: Guid(56a470c71a5e1ca4eb10fcb1e8155500) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SuikaVisualEffects/Textures/Magic/magic4.mat using Guid(56a470c71a5e1ca4eb10fcb1e8155500) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6e6677d51af6081fe10b589c0140c333') in 0.016288 seconds 
-  Import took 0.018616 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.067675 seconds.
-  path: Assets/SuikaVisualEffects/Background/New Lighting Settings.lighting
-  artifactKey: Guid(784892d73b91a624b85fbad67d4f6a78) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SuikaVisualEffects/Background/New Lighting Settings.lighting using Guid(784892d73b91a624b85fbad67d4f6a78) Importer(815301076,1909f56bfc062723c751e8b465ee728b) LightingSettings: switching bake backend from 1 to 2.
- -> (artifact id: 'd95b109a4502c32bf67754e762e39c19') in 0.003449 seconds 
-  Import took 0.005496 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.008491 seconds.
-  path: Assets/SuikaVisualEffects/Meshes/side_cylinder.mtl
-  artifactKey: Guid(be169f35eafe5384ab89ba96d9a186c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SuikaVisualEffects/Meshes/side_cylinder.mtl using Guid(be169f35eafe5384ab89ba96d9a186c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8d43005fccf1a97397200a3c63a54a21') in 0.004674 seconds 
-  Import took 0.006718 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.101402 seconds.
-  path: Assets/SuikaVisualEffects/Textures/Magic/magic1.mat
-  artifactKey: Guid(a242f21eea2a3784bb61d5f224e4c235) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SuikaVisualEffects/Textures/Magic/magic1.mat using Guid(a242f21eea2a3784bb61d5f224e4c235) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '745c99ef6857a25975ab8f21c533bb44') in 0.017058 seconds 
-  Import took 0.029812 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.025547 seconds.
-  path: Assets/SuikaVisualEffects/Meshes/uploads_files_2136690_Studio+Corner.mtl
-  artifactKey: Guid(c2e87f38a82e7f34cbfdb5d96d9ec236) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SuikaVisualEffects/Meshes/uploads_files_2136690_Studio+Corner.mtl using Guid(c2e87f38a82e7f34cbfdb5d96d9ec236) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4c1c4818b66fc64725a366df08ac3841') in 0.001969 seconds 
-  Import took 0.003947 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.001752 seconds.
-  path: Assets/SuikaVisualEffects/Explosion
-  artifactKey: Guid(cf782d3762840fc40a815d5a749966a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SuikaVisualEffects/Explosion using Guid(cf782d3762840fc40a815d5a749966a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f9d0ef7743c23e6ec422248bbac7b7a6') in 0.001615 seconds 
-  Import took 0.003629 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.013451 seconds.
-  path: Assets/SuikaVisualEffects/Explosion/LightingData.asset
-  artifactKey: Guid(dc0250b29378ac444a439a564d035c35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SuikaVisualEffects/Explosion/LightingData.asset using Guid(dc0250b29378ac444a439a564d035c35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4d88e0a4b2c425728a1a18153cc872ee') in 0.004750 seconds 
-  Import took 0.042738 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.082886 seconds.
-  path: Assets/SuikaVisualEffects/Explosion_Profiles/Main Camera Profile.asset
-  artifactKey: Guid(1ec4295398079f9419a8ee69eca3d826) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SuikaVisualEffects/Explosion_Profiles/Main Camera Profile.asset using Guid(1ec4295398079f9419a8ee69eca3d826) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '591c3d17020671ed6a2c12f95c5d785e') in 0.007893 seconds 
-  Import took 0.038947 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.018169 seconds.
-  path: Assets/SuikaVisualEffects/Editor/SVEGeneralShaderGUI.cs
-  artifactKey: Guid(2d96b4096dbb95b4c99cb960eb8f6fad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SuikaVisualEffects/Editor/SVEGeneralShaderGUI.cs using Guid(2d96b4096dbb95b4c99cb960eb8f6fad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '94f415328f2a85edd1a71f660f4ad7c3') in 0.005681 seconds 
-  Import took 0.021793 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.037157 seconds.
-  path: Assets/SuikaVisualEffects/Effects/Projectile/Projectile.unity
-  artifactKey: Guid(994cbff4aab9ebc46853778cf7b1ccfa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SuikaVisualEffects/Effects/Projectile/Projectile.unity using Guid(994cbff4aab9ebc46853778cf7b1ccfa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5f0836f8dbb5806efbd11c7fb3aba832') in 0.002338 seconds 
-  Import took 0.004353 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.189392 seconds.
-  path: Assets/SuikaVisualEffects/Textures/Magic/magic3.mat
-  artifactKey: Guid(fa00d420147b28d4bb6f8933c15c97d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SuikaVisualEffects/Textures/Magic/magic3.mat using Guid(fa00d420147b28d4bb6f8933c15c97d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '53b3f3c69ec7446dd37631daab2a18f2') in 0.029298 seconds 
-  Import took 0.031419 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.117375 seconds.
-  path: Assets/SuikaVisualEffects/Effects/Blackhole/Blackhole.unity
-  artifactKey: Guid(695eb4fca4f957c48a3f40a4ecfcf239) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SuikaVisualEffects/Effects/Blackhole/Blackhole.unity using Guid(695eb4fca4f957c48a3f40a4ecfcf239) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ee425dba5aa6b95b129d5465e3956ff7') in 0.002565 seconds 
-  Import took 0.011310 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.260550 seconds.
-  path: Assets/SuikaVisualEffects/Effects/Sparks/Sparks.unity
-  artifactKey: Guid(b70a22daba4a88d44a2c8755466cf5cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SuikaVisualEffects/Effects/Sparks/Sparks.unity using Guid(b70a22daba4a88d44a2c8755466cf5cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7b656185acaec4decd99c6905a5087b9') in 0.003273 seconds 
-  Import took 0.027195 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.005072 seconds.
-  path: Assets/SuikaVisualEffects/Scripts/CameraAnime.cs
-  artifactKey: Guid(6a486882ca513b341abd7c226279e641) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SuikaVisualEffects/Scripts/CameraAnime.cs using Guid(6a486882ca513b341abd7c226279e641) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '896f7aae1750fbda1d1fa952ab0406e6') in 0.001966 seconds 
-  Import took 0.003982 seconds .
-
-AssetImportWorkerClient::OnTransportError - code=2 error=End of file
